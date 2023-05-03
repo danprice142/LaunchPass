@@ -93,6 +93,9 @@ StyleCopReport.xml
 *.svclog
 *.scc
 
+# Files built by Visual Studio Code
+*.code-workspace
+
 # Chutzpah Test files
 _Chutzpah*
 
@@ -226,7 +229,6 @@ ClientBin/
 *.dbmdl
 *.dbproj.schemaview
 *.jfm
-*.pfx
 *.publishsettings
 orleans.codegen.cs
 
@@ -348,3 +350,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Background Assets
+RetroPass/Assets/Background/*.mp4
