@@ -1,5 +1,6 @@
 ﻿using LaunchPass;
 using System;
+using Windows.ApplicationModel;
 using Windows.Storage;
 using Windows.System;
 using Windows.UI.Core;
@@ -21,6 +22,7 @@ namespace RetroPass
     {
         DataSourceManager dataSourceManager;
         Brush defaultForeground;
+        string AppVersion { get; set; }
 
         public SettingsPage()
         {
@@ -29,6 +31,10 @@ namespace RetroPass
             Loaded += SettingsPage_Loaded;
 
             defaultForeground = ButtonActivateLocalStorage.Foreground;
+            {
+                var version = Package.Current.Id.Version;
+                AppVersion = string.Format("v{0}.{1}.{2}", version.Major, version.Minor, version.Build);
+            }
         }
 
         protected override async void OnKeyDown(KeyRoutedEventArgs e)
@@ -345,6 +351,23 @@ namespace RetroPass
         {
             // The URI to launch
             var uri = new Uri("microsoft-edge:https://misunderstood-wookiee.github.io/LaunchPass/MYSTERY.html");
+            // Launch the URI
+            var success = await Windows.System.Launcher.LaunchUriAsync(uri);
+            if (success)
+            {
+                // URI launched
+            }
+            else
+            {
+                // URI launch failed
+                var dialog = new MessageDialog("Sorry, something went wrong! Check your connection and make sure you have MS-Edge browser.");
+                await dialog.ShowAsync();
+            }
+        }
+        private async void LP_Click(object sender, RoutedEventArgs e)
+        {
+            // The URI to launch
+            var uri = new Uri("microsoft-edge:https://discord.gg/eYt92NNhNE");
             // Launch the URI
             var success = await Windows.System.Launcher.LaunchUriAsync(uri);
             if (success)

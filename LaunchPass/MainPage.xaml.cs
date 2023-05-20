@@ -401,7 +401,6 @@ namespace RetroPass
                 // It's phase 1, so show this item's image.
                 var templateRoot = args.ItemContainer.ContentTemplateRoot as FrameworkElement;
                 var image = (Image)templateRoot.FindName("ItemImage");
-                image.CacheMode = new BitmapCache();
                 image.Opacity = 100;
 
                 var item = args.Item as PlaylistItem;
@@ -465,5 +464,36 @@ namespace RetroPass
             await ShowSearch();
         }
 
+        private async void page_Drop(object sender, DragEventArgs e)
+        {
+            if (e.DataView.Contains(StandardDataFormats.StorageItems))
+            {
+                var items = await e.DataView.GetStorageItemsAsync();
+                if (items.Any())
+                {
+                    var storageFile = items[0] as StorageFile;
+                    var contentType = storageFile.ContentType;
+                    StorageFolder folder = ApplicationData.Current.LocalFolder;
+                    if (contentType == "image/jpg" || contentType == "image/png" || contentType == "image/webp" || contentType == "image/jpeg")
+                    {
+                        StorageFile newFile = await storageFile.CopyAsync(folder, storageFile.Name, NameCollisionOption.GenerateUniqueName);
+                        var bitmapImg = new BitmapImage();
+                        bitmapImg.SetSource(await storageFile.OpenAsync(FileAccessMode.Read));
+                        //imgMain.Source = bitmapImg;
+                        this.Background = new ImageBrush { ImageSource = bitmapImg, Stretch = Stretch.None };
+                    }
+                }
+            }
+            e.AcceptedOperation = DataPackageOperation.None;
+        }
+
+        private async void page_DragOver(object sender, DragEventArgs e)
+        {
+            e.AcceptedOperation = DataPackageOperation.Copy;
+            // To display the data which is dragged
+            e.DragUIOverride.IsGlyphVisible = true;
+            e.DragUIOverride.IsContentVisible = true;
+            e.DragUIOverride.IsCaptionVisible = true;
+        }
     }
 }

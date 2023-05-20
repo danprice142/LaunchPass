@@ -8,8 +8,8 @@
     AllowDrop="True"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    NavigationCacheMode="Required"
+    mc:Ignorable="d" Drop="page_Drop"
+    NavigationCacheMode="Required"  DragOver="page_DragOver"
     FontFamily="Segoe UI">
     <Page.Resources>
         <ListView x:Name="ListViewPlatformTemplate" CornerRadius="4,4,4,4">

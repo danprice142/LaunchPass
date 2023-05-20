@@ -16,6 +16,19 @@ namespace RetroPass
             duckstation,
             xenia,
             xeniacanary,
+            gamecube,
+            wii,
+            virtualconsole,
+            riivolution,
+            nintendo64,
+            gameboy,
+            gbcolour,
+            gbadvance,
+            win95,
+            w98,
+            saturn,
+            nds,
+            dos,
         }
 
         public string Name { get; set; }
@@ -59,6 +72,58 @@ namespace RetroPass
             else if (string.IsNullOrEmpty(emulatorPath) == false && emulatorPath.Contains("duckstation", System.StringComparison.CurrentCultureIgnoreCase))
             {
                 EmulatorType = EEmulatorType.duckstation;
+            }
+            else if (string.IsNullOrEmpty(emulatorPath) == false && emulatorPath.Contains("gamecube", System.StringComparison.CurrentCultureIgnoreCase))
+            {
+                EmulatorType = EEmulatorType.gamecube;
+            }
+            else if (string.IsNullOrEmpty(emulatorPath) == false && emulatorPath.Contains("wii", System.StringComparison.CurrentCultureIgnoreCase))
+            {
+                EmulatorType = EEmulatorType.wii;
+            }
+            else if (string.IsNullOrEmpty(emulatorPath) == false && emulatorPath.Contains("virtualconsole", System.StringComparison.CurrentCultureIgnoreCase))
+            {
+                EmulatorType = EEmulatorType.virtualconsole;
+            }
+            else if (string.IsNullOrEmpty(emulatorPath) == false && emulatorPath.Contains("riivolution", System.StringComparison.CurrentCultureIgnoreCase))
+            {
+                EmulatorType = EEmulatorType.riivolution;
+            }
+            else if (string.IsNullOrEmpty(emulatorPath) == false && emulatorPath.Contains("nintendo64", System.StringComparison.CurrentCultureIgnoreCase))
+            {
+                EmulatorType = EEmulatorType.nintendo64;
+            }
+            else if (string.IsNullOrEmpty(emulatorPath) == false && emulatorPath.Contains("gameboy", System.StringComparison.CurrentCultureIgnoreCase))
+            {
+                EmulatorType = EEmulatorType.gameboy;
+            }
+            else if (string.IsNullOrEmpty(emulatorPath) == false && emulatorPath.Contains("gbcolour", System.StringComparison.CurrentCultureIgnoreCase))
+            {
+                EmulatorType = EEmulatorType.gbcolour;
+            }
+            else if (string.IsNullOrEmpty(emulatorPath) == false && emulatorPath.Contains("gbadvance", System.StringComparison.CurrentCultureIgnoreCase))
+            {
+                EmulatorType = EEmulatorType.gbadvance;
+            }
+            else if (string.IsNullOrEmpty(emulatorPath) == false && emulatorPath.Contains("win95", System.StringComparison.CurrentCultureIgnoreCase))
+            {
+                EmulatorType = EEmulatorType.win95;
+            }
+            else if (string.IsNullOrEmpty(emulatorPath) == false && emulatorPath.Contains("w98", System.StringComparison.CurrentCultureIgnoreCase))
+            {
+                EmulatorType = EEmulatorType.w98;
+            }
+            else if (string.IsNullOrEmpty(emulatorPath) == false && emulatorPath.Contains("saturn", System.StringComparison.CurrentCultureIgnoreCase))
+            {
+                EmulatorType = EEmulatorType.saturn;
+            }
+            else if (string.IsNullOrEmpty(emulatorPath) == false && emulatorPath.Contains("nds", System.StringComparison.CurrentCultureIgnoreCase))
+            {
+                EmulatorType = EEmulatorType.nds;
+            }
+            else if (string.IsNullOrEmpty(emulatorPath) == false && emulatorPath.Contains("dos", System.StringComparison.CurrentCultureIgnoreCase))
+            {
+                EmulatorType = EEmulatorType.dos;
             }
             else if (string.IsNullOrEmpty(emulatorPath) == false &&
                 (emulatorPath.Contains("xenia-canary", System.StringComparison.CurrentCultureIgnoreCase) ||
